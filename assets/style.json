@@ -1,0 +1,24 @@
+{
+  "container": {
+    "flex": 1,
+    "paddingTop": 30,
+  },
+  "item": {
+    "padding": 10,
+    "fontSize": 18,
+    "height": 44,
+  },
+  "itemTitle": {
+    "padding": 30,
+    "fontSize": 18,
+    "height": 30,
+    "color": "red"
+  },
+  "content": {
+    "padding": 20,
+    "fontSize": 14,
+    "textAlign": "justify",
+    "backgroundColor": "#ccffcc",
+    "borderRadius": 20
+  }
+}

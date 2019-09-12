@@ -1,0 +1,37 @@
+{
+  "types":
+  [
+            {
+              "key": "Flaming",
+              "value": "Con tale termine si indicano messaggi elettronici, violenti e volgari, mirati a suscitare 'battaglie' verbali online, tra due o più contendenti, che si affrontano ad 'armi pari' per una durata temporale determinata dall’attività on line condivisa."
+            },
+            {
+              "key": "Exclusion",
+              "value": "Il Cyberbullo decide di escludere intenzionalmente un coetaneo da un gruppo online, da una chat, da un game interattivo o da altri ambienti protetti da password. Talvolta i ragazzi per indicare questa modalità prevaricatoria utilizzano il termine 'bannare'."
+            },
+            {
+              "key": "Harassment",
+              "value": "Si tratta di messaggi inviati ripetutamente nel tempo con contenuti offensivi e fastidiosi. Mandati per Sms, e-mail, social media, telefonate anonime e non."
+            },
+            {
+              "key": "Impersonation",
+              "value": "Se qualcuno viola l’account di qualcun altro può farsi passare per questa persona e inviare messaggi con l’obiettivo di dare una cattiva immagine della stessa, crearle problemi o metterla in pericolo, danneggiarne la reputazione o le amicizie."
+            },
+            {
+              "key": "Denigration",
+              "value": "L’obiettivo del cyberbullo è, in questo caso, quello di danneggiare la reputazione o le amicizie di un coetaneo, diffondendo on line pettegolezzi e/o altro materiale offensivo."
+            },
+            {
+              "key": "Cyberstalking",
+              "value": "Quando l’harassment diviene particolarmente insistente ed intimidatorio e la vittima comincia a temere per la propria sicurezza fisica, il comportamento offensivo assume la denominazione di cyber-persecuzione. E’ facile riscontrare il cyberstalking nell’ambito di relazioni fortemente conflittuali con i coetanei o nel caso di rapporti sentimentali interrotti."
+            },
+            {
+              "key": "Cyberbashing o Happyslapping",
+              "value": "E` un fenomeno giovanile iniziato nel 2004 circa in Inghilterra. Un gruppo di ragazzi scopre di divertirsi tirando ceffoni a sconosciuti, riprendendo il tutto con i videofonini. I video vengono poi distribuiti su internet. Dai ceffoni si è passati anche ad atti di aggressione e teppismo. Si è poi diffuso anche in altri paesi. Su internet si trovano numerosi video contenenti immagini di violenza ed è spesso associato al bullismo."
+            },
+            {
+              "key": "Outing And Trickery",
+              "value": "Si intende con il termine 'outing' una forma di cyberbullismo attraverso la quale, il cyberbullo, dopo aver 'salvato' le confidenze spontanee di un coetaneo, o immagini riservate ed intime, decide, in un secondo momento, di pubblicarle su un blog e/o diffonderle attraverso e-mail."
+            }
+          ]
+}
