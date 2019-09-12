@@ -1,4 +1,4 @@
 # cybersafe
-App about cyberbullying (React native).
+App with info about cyberbullying and features like sending photo/video of cyberbullying behaviours to the police (developed in React native).
 
-Designers: Giulia Quarant, Eva Francesca Aglianò
+Designers: Giulia Quaranta, Eva Francesca Aglianò
