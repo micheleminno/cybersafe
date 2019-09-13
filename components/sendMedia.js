@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileSystem } from 'expo';
+import * as FileSystem from 'expo-file-system';
 
 import {
   Button,
@@ -14,6 +14,8 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
+
+import moment from "moment";
 
 
 export class SendMediaScreen extends React.Component {
@@ -30,7 +32,9 @@ export class SendMediaScreen extends React.Component {
   }
 
   takePicture = () => {
+
     if (this.camera) {
+
       this.camera.takePictureAsync({ onPictureSaved: this.onPictureSaved });
     }
   };
@@ -38,10 +42,16 @@ export class SendMediaScreen extends React.Component {
   handleMountError = ({ message }) => console.error(message);
 
   onPictureSaved = async photo => {
+
+    let currentDate = new Date();
+    let formattedDate = moment(new Date()).format("YYYY-MM-DD_hh:mm:ss")
+    let toLocation = FileSystem.documentDirectory + 'photos/' + formattedDate + '.jpg';
+
     await FileSystem.moveAsync({
       from: photo.uri,
-      to: `${FileSystem.documentDirectory}photos/${Date.now()}.jpg`,
+      to: toLocation,
     });
+
     this.setState({ newPhotos: true });
   }
 
@@ -55,7 +65,9 @@ export class SendMediaScreen extends React.Component {
     } else {
       return (
         <View style={{ flex: 1 }}>
-          <Camera style={{ flex: 1 }} type={this.state.type}>
+          <Camera ref={ref => {
+            this.camera = ref;
+          }} style={{ flex: 1 }} type={this.state.type}>
             <View
               style={{
                 flex: 1,
