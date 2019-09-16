@@ -8,14 +8,14 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  CameraRoll,
+  ScrollView
 } from 'react-native';
 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
-
-import moment from "moment";
 
 
 export class SendMediaScreen extends React.Component {
@@ -43,19 +43,34 @@ export class SendMediaScreen extends React.Component {
 
   onPictureSaved = async photo => {
 
-    let currentDate = new Date();
-    let formattedDate = moment(new Date()).format("YYYY-MM-DD_hh:mm:ss")
-    let toLocation = FileSystem.documentDirectory + 'photos/' + formattedDate + '.jpg';
-
-    await FileSystem.moveAsync({
-      from: photo.uri,
-      to: toLocation,
-    });
-
+    CameraRoll.saveToCameraRoll(photo.uri);
     this.setState({ newPhotos: true });
   }
 
+  _renderPhotos(photos) {
+    let images = [];
+    for (let { node: photo } of photos.edges) {
+      images.push(
+        <Image
+          source={photo.image}
+          resizeMode="contain"
+          style={{ height: 100, width: 100, resizeMode: 'contain' }}
+        />
+      );
+    }
+    return images;
+  }
+
+  async _getPhotosAsync() {
+
+    let photos = await CameraRoll.getPhotos({ first: 4 });
+    this.setState({ photos });
+  }
+
   render() {
+
+    const styles = require('../assets/style.json');
+    let { photos } = this.state;
 
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
@@ -99,6 +114,13 @@ export class SendMediaScreen extends React.Component {
                 }}>
                 <Image style={{ width: 70, height: 70, margin: 10 }} source={require('../assets/images/cameraButton.png')} />
               </TouchableOpacity>
+            </View>
+            <View>
+            <ScrollView style={styles.container}>
+             {photos
+               ? this._renderPhotos(photos)
+               : <Text style={styles.content}>Fetching photos...</Text>}
+           </ScrollView>
             </View>
           </Camera>
         </View>
