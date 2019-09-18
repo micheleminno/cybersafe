@@ -1,5 +1,4 @@
 import React from 'react';
-import * as FileSystem from 'expo-file-system';
 
 import {
   Button,
@@ -16,14 +15,20 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
+import styles from '../assets/style.json';
+import { ViewPhotos } from './ViewPhotos';
 
 
 export class SendMediaScreen extends React.Component {
+
   state = {
     hasCameraPermission: null,
     newPhotos: false,
     type: 'back',
+    showPhotoGallery: false,
+    photoArray: []
   };
+
 
   async componentDidMount() {
     let that = this;
@@ -47,30 +52,17 @@ export class SendMediaScreen extends React.Component {
     this.setState({ newPhotos: true });
   }
 
-  _renderPhotos(photos) {
-    let images = [];
-    for (let { node: photo } of photos.edges) {
-      images.push(
-        <Image
-          source={photo.image}
-          resizeMode="contain"
-          style={{ height: 100, width: 100, resizeMode: 'contain' }}
-        />
-      );
-    }
-    return images;
-  }
+  async getPhotos() {
 
-  async _getPhotosAsync() {
+    CameraRoll.getPhotos({ first: 20, assetType: "Photos", groupTypes: "All" })
+     .then(res => {
 
-    let photos = await CameraRoll.getPhotos({ first: 4 });
-    this.setState({ photos });
+       let photoArray = res.edges;
+       this.setState({ showPhotoGallery: true, photoArray: photoArray })
+     })
   }
 
   render() {
-
-    const styles = require('../assets/style.json');
-    let { photos } = this.state;
 
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
@@ -78,17 +70,30 @@ export class SendMediaScreen extends React.Component {
     } else if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     } else {
+
+      this.getPhotos();
+
       return (
         <View style={{ flex: 1 }}>
+
           <Camera ref={ref => {
             this.camera = ref;
-          }} style={{ flex: 1 }} type={this.state.type}>
+          }} style={{ flex: 8 }} type={this.state.type}>
+
+            { this.state.showPhotoGallery ? (
+              <ViewPhotos photoArray={this.state.photoArray} />
+              ) : (
+                <Text style={styles.content}>Loading photos..</Text>
+              )
+            }
+
             <View
               style={{
                 flex: 1,
                 backgroundColor: 'transparent',
                 flexDirection: 'row',
               }}>
+
               <TouchableOpacity
                 style={{
                   flex: 0.7,
@@ -114,13 +119,6 @@ export class SendMediaScreen extends React.Component {
                 }}>
                 <Image style={{ width: 70, height: 70, margin: 10 }} source={require('../assets/images/cameraButton.png')} />
               </TouchableOpacity>
-            </View>
-            <View>
-            <ScrollView style={styles.container}>
-             {photos
-               ? this._renderPhotos(photos)
-               : <Text style={styles.content}>Fetching photos...</Text>}
-           </ScrollView>
             </View>
           </Camera>
         </View>

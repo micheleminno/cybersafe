@@ -20,5 +20,23 @@
     "textAlign": "justify",
     "backgroundColor": "#ccffcc",
     "borderRadius": 20
-  }
+  },
+  "button": {
+    "alignItems": "center",
+    "backgroundColor": "#DDDDDD",
+    "padding": 10
+  },
+  "image": {
+    "width": 110,
+    "height": 120,
+    "marginLeft": 10,
+    "marginTop": 10,
+    "borderRadius": 5,
+    "borderWidth": 1,
+    "borderColor": "#979797"
+  },
+  "list": {
+    "flexDirection": "row",
+    "flexWrap": "wrap"
+  },
 }

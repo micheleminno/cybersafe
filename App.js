@@ -2,10 +2,10 @@ import React from 'react';
 import { Button, Image, View, Text, StyleSheet } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import { TypesScreen } from './components/cyberbullyingTypes';
-import { CyberbullyScreen } from './components/cyberbully';
-import { InfoScreen } from './components/info';
-import { SendMediaScreen } from './components/sendMedia';
+import { TypesScreen } from './components/CyberbullyingTypes';
+import { CyberbullyScreen } from './components/Cyberbully';
+import { InfoScreen } from './components/Info';
+import { SendMediaScreen } from './components/SendMedia';
 
 class LogoTitle extends React.Component {
   render() {

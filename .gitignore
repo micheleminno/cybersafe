@@ -6,3 +6,4 @@ artifacts/
 package-lock.json
 node_modules/ 
 .expo/
+.expo-shared/
