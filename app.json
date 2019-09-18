@@ -1,9 +1,9 @@
 {
   "expo": {
     "name": "cybersafe",
-    "description": "About cyberbullying",
+    "description": "About cyberbullying (saving and viewing photos).",
     "slug": "snack-84865fda-2404-4bc2-85b8-48cde2ced666",
-    "privacy": "unlisted",
+    "privacy": "public",
     "sdkVersion": "34.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
